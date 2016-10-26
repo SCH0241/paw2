@@ -12,6 +12,15 @@
 	        
 </head>
 <body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+<script>
+$(document).ready(function(){
+		$("#strong1").click(function(){
+			$(this).hide();
+		});
+	});
+</script>
 <form>
 	<p>
 	Počet:<input type="number" name="pocet" min="0" max="100" step="1" value="30">
@@ -45,12 +54,13 @@
 	*/
 	
 	$Opava = array("Opava", "Opave", "Opavou"); 
-	
+	$sel=0;
 	for ($i=0; $i<count($pieces); $i++) {
 		$word = trim($pieces[$i], ". \t\n");
 		$word = str_replace(".", "", $word);
 		if (in_array($word, $Opava)) {
-			$pieces[$i] = "<strong>".$pieces[$i]."</strong>";
+			$sel++;
+			$pieces[$i] = "<strong id=strong1>".$pieces[$i]."</strong>";
 		}
 	}
 	$text1_strong_opava = implode(" ", $pieces);
@@ -66,6 +76,6 @@
 	}
 	echo "</ol>";	
 	*/
-?>
+?>	
 </body>
 </html>
