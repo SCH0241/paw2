@@ -9,7 +9,7 @@
 	<meta name="robots" content="index, follow">
 	<meta name="revisit-after" content="7 days">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	        
+	<meta charset="utf-8" />        
 </head>
 <body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -21,6 +21,30 @@ $(document).ready(function(){
 		});
 	});
 </script>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.1/dist/leaflet.css" />
+	<script src="https://unpkg.com/leaflet@1.0.1/dist/leaflet.js"></script>
+	<script src="http://gisak.vsb.cz/ruzicka/lib/leaflet/showplace.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script>
+	$(document).ready(function(){
+		
+		setMap('mapid');
+		$("#mapid").hide();
+		
+		$("strong").click(function(){
+			
+			$("#mapid").show();
+			
+			var lat = $(this).attr("lat");
+			var lon = $(this).attr("lon");
+			var zoom = $(this).attr("zoom");
+			var text = $(this).attr("text");
+			
+			showPlace(lat, lon, zoom, text);
+		});
+	});
+	</script>
 <form>
 	<p>
 	Počet:<input type="number" name="pocet" min="0" max="100" step="1" value="30">
@@ -77,5 +101,9 @@ $(document).ready(function(){
 	echo "</ol>";	
 	*/
 ?>	
+<p><strong lat="49.9407" lon="17.8948" zoom="10" text="Zde je <strong>Opava</strong>">Opava</strong> je pěkné město</p>
+<p>Ale <strong lat="49.8079358" lon="17.8628994" zoom="12" text="Zde jsou <strong>Lesní Albrechtice</strong>">Lesní Albrechtice</strong> má rodná vesnička</p>
+<div id="mapid" style="width: 600px; height: 400px;"></div>
+
 </body>
 </html>
